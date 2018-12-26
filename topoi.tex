@@ -16,21 +16,7 @@
 \usepackage{tikz-cd}
 
 \usepackage{tikz}
-\usetikzlibrary{automata, positioning, arrows,
-shapes,
-fit, % for the dashed boxes on Thompson's construction
-calc
-}
-\tikzset{%
-  node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
-  every state/.style={thick}, % sets the properties for each ’state’ node
-  double distance=2.5pt,
-  shorten >= 2pt, shorten <= 2pt,
-  initial text=$ $,
-  every edge/.style={%
-    draw,->, >=stealth, auto, semithick
-  }
-}
+\usetikzlibrary{automata, positioning, arrows}
 \graphicspath{{imgs/}}
 
 \definecolor{darkblue}{RGB}{49,130,189}
@@ -66,11 +52,7 @@ calc
 \newcommand{\m}{\mathbf{m}}
 \newcommand{\MM}{\mathscr{M}}
 \newcommand{\HH}{\mathscr{H}}
-\newcommand{\Om}{\Omega}
 \newcommand{\Ho}{\in\HH(\Om)}
-\newcommand{\bd}{\partial}
-\newcommand{\del}{\partial}
-\newcommand{\bardel}{\overline\partial}
 \newcommand{\textdf}[1]{\textbf{\textsf{#1}}\index{#1}}
 \newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
 \newcommand{\inter}[1]{\mathrm{int}{#1}}
@@ -90,6 +72,7 @@ calc
 \newcommand{\wh}{\widehat}
 
 \newcommand{\PS}{\mathcal{P}}
+\newcommand{\CC}{\mathscr{C}}
 \newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\Set}{\mathbf{Set}}
 \newcommand{\bra}[1]{\left[#1\right]}
@@ -103,9 +86,6 @@ calc
 \newcommand{\dom}{\mathrm{dom~}}
 \newcommand{\im}{\mathrm{im~}}
 \newcommand{\thra}{\twoheadrightarrow}
-\newcommand{\emptystr}{\varepsilon}
-\newcommand{\emptylan}{\emptyset}
-\newcommand{\pdv}[2]{\partial_{#1} \bigl(#2\bigr)}
 
 %Pagination stuff.
 \setlength{\topmargin}{-.3 in}
@@ -181,6 +161,7 @@ calc
 %\renewcommand{\thesubsection}{\Roman{subsection}} 
 
 \begin{document}
+\section*{Chapter 3}
 \begin{solution}
   Suppose $f\colon A \to B$ and $g\colon B \to C$ are monic. Let $a\colon
   \mathbf{1} \to A$ and $b\colon \mathbf{1} \to B$ be two points
@@ -286,7 +267,7 @@ Therefore $1_A$ is iso. Alternatively, we could say that since $1_A \circ 1_A
 \begin{solution}
   3.6.3 Let $f\colon 1 \to A$ be an arrow whose domain is a terminal object, and
   let $g, h \colon B \to 1$ be a pair of functions such that $f \circ g = f
-  \circ h$. Since $1$ a terminal object, there is one and only one arrow from
+  \circ h$. Since 1 is a terminal object, there is one and only one arrow from
   $B$ to $1$. Thus $g = h$.
 \end{solution}
 
@@ -310,5 +291,45 @@ Therefore $1_A$ is iso. Alternatively, we could say that since $1_A \circ 1_A
   \end{tikzcd}
   \end{center}
 
+\end{solution}
+
+\begin{solution}
+  3.8.2 Suppose $\langle f, g \rangle = \langle k, h \rangle$. Then all we need
+  is to left-compose $\text{pr}_a$ and $\text{pr}_b$:
+  \[
+    \arraycolsep=2pt
+    \begin{array}{rcl @{\hspace{2cm}} rcl}
+    pr_a \circ \langle f,g\rangle &=& pr_a \circ \langle k,h\rangle & pr_b \circ
+    \langle f,g\rangle &=& pr_b \circ \langle k,h\rangle \\
+    f &=& k & g &=& h
+  \end{array}
+  \]
+\end{solution}
+
+\begin{solution}
+  3.8.3 TODO
+\end{solution}
+\begin{solution}
+  3.8.4 TODO
+\end{solution}
+\begin{solution}
+  3.8.5 TODO
+\end{solution}
+\begin{solution}
+  3.8.6 Let $a, b$ be two objects in $\CC$, and $a \times b$ be a product of $a$
+  and $b$. By definition, we have the projections $pr_a\colon a \times b \to a$
+  and $pr_b\colon a \times b \to b$. Take the product $\langle pr_b, pr_a
+  \rangle\colon a \times b \to b \times a$. Its inverse is given by $\langle
+  pr_a', pr_b'\rangle$, where $pr_a'\colon b \times a \to a$ and $pr_b' \colon b
+  \times a \to b$. Thus, $\langle pr_a, pr_b \rangle$ is an iso, therefore
+  $a\times b \cong b \times a$.
+  \begin{center}
+  \begin{tikzcd}[row sep=36pt, column sep=36pt]
+    & a \times b \ar[rd, "pr_b"] \ar[ld, "pr_a"'] \ar[dd, "\langle pr_b{,}pr_a \rangle"', shift right] & \\
+    a & & b \\
+      & b \times a \ar[lu, "pr_a'"] \ar[uu, "\langle pr_a'{,}pr_b' \rangle"',
+    shift right] \ar[ru, "pr_b'"'] &
+  \end{tikzcd}
+  \end{center}
 \end{solution}
 \end{document}
