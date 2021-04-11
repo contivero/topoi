@@ -1,0 +1,25 @@
+\section*{Chapter 4}
+
+\begin{solution}
+4.2.1
+
+Show that the character of $\textit{true}: 1 \rightarrow \Omega$ is $1_\Omega$
+(\text{i.e.} $\chi_{true}=1_\Omega$). We will use the notation $\textit{true}_a$ for the composition $\textit{true} \circ I_a$.
+
+Consider the diagram
+
+\begin{center}
+\begin{tikzcd}[row sep=20pt, column sep=68pt]
+  & 1 \ar[r, "\textit{true}"] \ar[d, "!"] & \Omega \ar[d, "1_\Omega"]\\
+  & 1 \ar[r, "\textit{true}"]  & \Omega
+\end{tikzcd}
+\end{center}
+
+We show that this diagram is a pullback diagram which implies that $\chi_{true} = 1_\Omega$ by the subobject classifier axiom for Topoi.
+
+The diagram is commutative since $1_\Omega \circ \textit{true} = \textit{true}$ and $\textit{true} \circ ! = \textit{true} \circ 1_1 = \textit{true}$
+
+Furthermore, the diagram satisfies the uniqueness condition for pullbacks. Suppose $f: e \rightarrow \Omega$ and $g: e \rightarrow 1$ are maps which also lead to a commutative diagram ($1_\Omega \circ f = \textit{true} \circ g$). Note that $g = I_e$ is a unique map to the terminal object.
+Since the top left corner of the diagram is the terminal object $1$ there is a unique map $I_e: e \rightarrow 1$. We show the entire diagram, including $e$ and its maps is commutative.
+$1_\Omega \circ f = \textit{true} \circ g = \textit{true}_e$. Also, $g = I_e = 1_1 \circ I_e$.
+\end{solution}
