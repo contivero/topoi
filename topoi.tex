@@ -4,7 +4,6 @@
 \hypersetup{pdfauthor={Cristian Adrián Ontivero}}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{gensymb} % for the degree symbol
 \usepackage{caption}
 \usepackage{float}
 \usepackage{color}
@@ -54,7 +53,6 @@
 \newcommand{\HH}{\mathscr{H}}
 \newcommand{\Ho}{\in\HH(\Om)}
 \newcommand{\textdf}[1]{\textbf{\textsf{#1}}\index{#1}}
-\newcommand{\ip}[2]{\left\langle{#1},{#2}\right\rangle}
 \newcommand{\inter}[1]{\mathrm{int}{#1}}
 \newcommand{\exter}[1]{\mathrm{ext}{#1}}
 \newcommand{\cl}[1]{\mathrm{cl}{#1}}
@@ -74,6 +72,7 @@
 \newcommand{\PS}{\mathcal{P}}
 \newcommand{\CC}{\mathscr{C}}
 \newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\ang}[1]{\left\langle #1 \right\rangle}
 \newcommand{\Set}{\mathbf{Set}}
 \newcommand{\bra}[1]{\left[#1\right]}
 \newcommand{\abs}[1]{\left|#1\right|}
@@ -94,17 +93,6 @@
 \setlength{\textheight}{9.in}
 \setlength{\textwidth}{6.5in}
 \pagestyle{empty}
-
-% The problem environment is a regular ams theorem environment with "Problem"
-% text and some leading space to give some separation between the problems.
-\theoremstyle{definition}
-\newtheorem{problem-internal}{Problem}[subsection]
-\newenvironment{problem}{
-  \medskip
-  \begin{problem-internal}
-}{
-  \end{problem-internal}
-}
 
 % The solution environment is a proof environment with the "solution" text as
 % well as the following adjustments:
@@ -129,41 +117,12 @@
   \end{solution-internal}
 }
 
-% The chngcntr ("change counter") package is used here so that subsection
-% numbers are written without the leading section number. This takes place in
-% the subsection headings as well as the theorem environment numbering.
-%
-% Before:
-% 1. Section
-% 1.1. Subsection
-% Problem 1.1.1. What is 1 + 1?
-% Problem 1.1.2. What is 1 + 2?
-%
-% After:
-% 1. Section
-% 1. Subsection
-% Problem 1.1. What is 1 + 1?
-% Problem 1.2. What is 1 + 2?
-\usepackage{chngcntr}
-\counterwithout{subsection}{section}
-
-% Renewing the \thesection command changes the section numbers to roman
-% numerals. This matches the style of the Aluffi textbook.
-%
-% Before:
-% 1. Section
-% 1.1. Subsection
-%
-% After:
-% I. Section
-% I.1. Subsection
-%\renewcommand{\thesection}{\Roman{section}} 
-%\renewcommand{\thesubsection}{\Roman{subsection}} 
-
 \begin{document}
 \section*{Chapter 3}
+\setcounter{section}{3}
+\setcounter{subsection}{1}
 \begin{solution}
-  Suppose $f\colon A \to B$ and $g\colon B \to C$ are monic. Let $a\colon
+  (1) Suppose $f\colon A \to B$ and $g\colon B \to C$ are monic. Let $a\colon
   \mathbf{1} \to A$ and $b\colon \mathbf{1} \to B$ be two points
   such that $g \circ f \circ a = g \circ f \circ b$. Then:
   \[
@@ -176,7 +135,7 @@
   \]
   Thus $g \circ f$ is monic.
 
-  Suppose $g \circ f$ is monic. Then
+  (2) Suppose $g \circ f$ is monic. Then
   \[
     \arraycolsep=2pt
     \begin{array}{rcl@{\hspace{2cm}}l}
@@ -188,8 +147,13 @@
   Thus $f$ is monic.
 
 \end{solution}
+
+
+\setcounter{subsection}{3}
+\setcounter{solution-internal}{0}
+% 3.3.1
 \begin{solution}
-3.3.1 To show that every identity arrow is iso, we need to show it is monic,
+To show that every identity arrow is iso, we need to show it is monic,
 and epic. Let $1_A$ be an identity arrow. Then:
 \begin{itemize}
   \item Monic: Let $a_1 \colon \point{A}$ and $a_2 \colon \point{A}$ be two points
@@ -202,18 +166,17 @@ Therefore $1_A$ is iso. Alternatively, we could say that since $1_A \circ 1_A
 = 1_A$, $1_A$ is its own inverse (i.e.\ an involution), and hence an iso.
 \end{solution}
 
-\begin{solution}
-  3.3.2
+% 3.3.2
+\begin{solution} 
   Let $f\colon A \to B$ be an iso. Then there exists a function $f^{-1}\colon
   B \to A$ such that $f^{-1} \circ f = 1_A$ and $f \circ f^{-1} = 1_B$ But
   then taking $f$ as ${(f^{-1})}^{-1}$ (the inverse of the inverse) proves
   that $f^{-1}$ is an iso.
 \end{solution}
 
+% 3.3.3
 \begin{solution}
-  3.3.3
   Suppose $f\colon B \to C$ and $g\colon A \to B$ are iso. Then 
-  
   \[ (f \circ g) \circ (g^{-1} \circ f^{-1}) = f \circ (g \circ g^{-1}) \circ
   f^{-1} = f \circ 1_B \circ f^{-1} = f \circ f^{-1} = 1_C \]
   and 
@@ -222,8 +185,11 @@ Therefore $1_A$ is iso. Alternatively, we could say that since $1_A \circ 1_A
   Thus $f \circ g$ is an iso, with $(f \circ g)^{-1} = g^{-1} \circ f^{-1}$.
 \end{solution}
 
+\setcounter{subsection}{4}
+\setcounter{solution-internal}{0}
+%3.4.1 
 \begin{solution}
-  3.4.1 
+  $ $
   \begin{enumerate}[label=\roman*.]
     \item $1_A\colon A \cong A \Rightarrow A \cong A$, i.e.\ there is an arrow---the identity---from $A$ to $A$, which is an iso, thus $A \cong A$.
     \item Let $A \cong B$. Then there exists an arrow $f \colon A \to B$ which
@@ -235,8 +201,11 @@ Therefore $1_A$ is iso. Alternatively, we could say that since $1_A \circ 1_A
   \end{enumerate}
 \end{solution}
 
+\setcounter{subsection}{6}
+\setcounter{solution-internal}{0}
+%3.6.1 
 \begin{solution}
-  3.6.1 Given $1$ and $1'$ terminal $\mathscr{C}$-objects there exists a unique arrow $!_1
+  Given $1$ and $1'$ terminal $\CC$-objects there exists a unique arrow $!_1
   \colon 1 \to 1'$, since $1'$ is terminal, and there exists a unique arrow
   $!_{1'} \colon 1' \to 1$, since 1 is terminal. Then $!_1 \circ !_{1'}\colon
   1 \to 1$. Since there is only one arrow from $1$ to $1$, it must be the
@@ -255,81 +224,168 @@ Therefore $1_A$ is iso. Alternatively, we could say that since $1_A \circ 1_A
   \end{center}
 \end{solution}
 
+\setcounter{subsection}{6}
+\setcounter{solution-internal}{0}
+% 3.6.2 
 \begin{solution}
-  3.6.2 
   \begin{align*}
-    \Set^2 &: \langle \set{e}, \set{e'} \rangle \\
+    \Set^2 &: \ang{\set{e}, \set{e'}} \\
     Set^{\rightarrow} &: TODO \\
     \text{poset}~\mathbf{n} &: n, \text{since $n$ satisfies $\forall x (x \sqsubseteq n)$}
   \end{align*}
 \end{solution}
 
+% 3.6.3 
 \begin{solution}
-  3.6.3 Let $f\colon 1 \to A$ be an arrow whose domain is a terminal object, and
+  Let $f\colon 1 \to A$ be an arrow whose domain is a terminal object, and
   let $g, h \colon B \to 1$ be a pair of functions such that $f \circ g = f
   \circ h$. Since 1 is a terminal object, there is one and only one arrow from
   $B$ to $1$. Thus $g = h$.
 \end{solution}
 
+\setcounter{subsection}{8}
+\setcounter{solution-internal}{0}
 \begin{solution}
-  3.8.1 We need to show that $\langle pr_a, pr_b \rangle = 1_{a \times b}$. For
+  We need to show that $\ang{pr_a, pr_b} = 1_{a \times b}$. For
   this, note that:
   \begin{align*}
     1_{a \times b} &\colon a \times b \to a \times b \\
     pr_a           &\colon a \times b \to a \\
     pr_b           &\colon a \times b \to b
   \end{align*}
-  Thus, taking the product of $pr_a$ and $pr_b$, we get $\langle pr_a, pr_b
-  \rangle \colon a \times b \to a \times b$.
+  Thus, taking the product of $pr_a$ and $pr_b$, we get $\ang{pr_a, pr_b} \colon a \times b \to a \times b$.
 
   \begin{center}
   \begin{tikzcd}[row sep=20pt, column sep=68pt]
     & b \\
-    a \times b \ar[r, dashed, "\langle pr_a{,} pr_b \rangle"] \ar[ru, "pr_b"]
+    a \times b \ar[r, dashed, "\ang{pr_a{,} pr_b}"] \ar[ru, "pr_b"]
     \ar[rd, "pr_a"'] & a \times b \ar[d, "pr_a"] \ar[u, "pr_b"'] \\
             & a
   \end{tikzcd}
   \end{center}
-
 \end{solution}
 
+% 3.8.2 
 \begin{solution}
-  3.8.2 Suppose $\langle f, g \rangle = \langle k, h \rangle$. Then all we need
+  Suppose $\ang{f, g} = \ang{k, h}$. Then all we need
   is to left-compose $\text{pr}_a$ and $\text{pr}_b$:
   \[
     \arraycolsep=2pt
     \begin{array}{rcl @{\hspace{2cm}} rcl}
-    pr_a \circ \langle f,g\rangle &=& pr_a \circ \langle k,h\rangle & pr_b \circ
-    \langle f,g\rangle &=& pr_b \circ \langle k,h\rangle \\
+      pr_a \circ \ang{f,g} &=& pr_a \circ \ang{k, h} & pr_b \circ
+      \ang{f, g} &=& pr_b \circ \ang{k, h} \\
     f &=& k & g &=& h
   \end{array}
   \]
 \end{solution}
 
+%3.8.3
 \begin{solution}
-  3.8.3 TODO
+TODO
 \end{solution}
+
+% 3.8.4 
 \begin{solution}
-  3.8.4 TODO
+TODO
 \end{solution}
+
+% 3.8.5
 \begin{solution}
-  3.8.5 TODO
+TODO
 \end{solution}
+
+% 3.8.6
 \begin{solution}
-  3.8.6 Let $a, b$ be two objects in $\CC$, and $a \times b$ be a product of $a$
-  and $b$. By definition, we have the projections $pr_a\colon a \times b \to a$
-  and $pr_b\colon a \times b \to b$. Take the product $\langle pr_b, pr_a
-  \rangle\colon a \times b \to b \times a$. Its inverse is given by $\langle
-  pr_a', pr_b'\rangle$, where $pr_a'\colon b \times a \to a$ and $pr_b' \colon b
-  \times a \to b$. Thus, $\langle pr_a, pr_b \rangle$ is an iso, therefore
-  $a\times b \cong b \times a$.
+  Let $a, b$ be two objects in $\CC$, and $a \times b$ be a product of $a$
+  and $b$, with $pr_a\colon a \times b \to a$ and $pr_b\colon a \times b \to b$
+  its corresponding projections. Take the product arrow $\ang{pr_b, pr_a}\colon
+  a \times b \to b \times a$. Its inverse is given by $\ang{pr_a', pr_b'}$,
+  where $pr_a'\colon b \times a \to a$ and $pr_b' \colon b \times a \to b$ are
+  the product arrows of $b \times a$. Thus, $\ang{pr_a, pr_b}$ is an
+  iso, therefore $a\times b \cong b \times a$.
   \begin{center}
   \begin{tikzcd}[row sep=36pt, column sep=36pt]
-    & a \times b \ar[rd, "pr_b"] \ar[ld, "pr_a"'] \ar[dd, "\langle pr_b{,}pr_a \rangle"', shift right] & \\
+    & a \times b \ar[rd, "pr_b"] \ar[ld, "pr_a"'] \ar[dd, "\ang{pr_b{,}pr_a}"', shift right] & \\
     a & & b \\
-      & b \times a \ar[lu, "pr_a'"] \ar[uu, "\langle pr_a'{,}pr_b' \rangle"',
+      & b \times a \ar[lu, "pr_a'"] \ar[uu, "\ang{pr_a'{,}pr_b'}"',
     shift right] \ar[ru, "pr_b'"'] &
   \end{tikzcd}
   \end{center}
 \end{solution}
+
+% 3.8.7
+\newpage
+\begin{solution}
+  Let $a, b, c$ be $\CC$-objects. Then $a \times b$, $b \times c$,$(a\times b)
+  \times c$ and $(a\times b)\times c$ are all product objects with their
+  corresponding projections. Denote the projections of each
+  product object by $\pi^i_j$ whenever $\pi^i_j\colon i \to j$.
+  Then setting the following arrows makes the diagram commute.
+
+  \begin{center}
+  \begin{tikzcd}[row sep=80pt, column sep=140pt]
+    (a \times b) \times c \ar[d, "\pi^{(a\times b) \times c}_{a \times b}"'] \ar[rr, dashed, "\ang{\pi^{a\times b}_a \circ \pi^{(a\times b) \times
+    c}_{a\times b}{,} \ang{\pi^{a\times b}_b \circ \pi^{(a\times b)\times c}_{a\times b}{,} \pi^{(a\times b)\times c}_c}}"] \ar[drr, dashed, sloped,
+    pos=.12, "\ang{\pi^{a \times b}_b \circ \pi^{(a\times b)\times c}_{a\times
+    b}, \pi^{(a\times b)\times c}_c}"]
+    \ar[ddrr, "\pi^{(a\times b)\times c}_c", sloped, pos=.6] & & a \times (b \times
+    c) \ar[d, "\pi^{a \times (b\times c)}_{b\times c}"] \ar[dll, dashed, sloped,
+    pos=.12, "\ang{\pi^{a\times(b\times c)}_a, \pi^{b\times c}_b \circ
+    \pi^{a\times(b\times c)}_{b\times c}}"'] \ar[ddll, "\pi^{a\times (b\times
+  c)}_a"', sloped, pos=.6] \\
+    a \times b \ar[d, "\pi^{a\times b}_a"'] \ar[dr, "\pi^{a \times b}_b"',
+    sloped, pos=.8] & & b
+    \times c \ar[d, "\pi^{b\times c}_c"]
+    \ar[dl, "\pi^{b\times c}_b", sloped, pos=.8] \\
+    a & b & c
+  \end{tikzcd}
+  \end{center}
+The arrow $\ang{\pi^{a\times b}_a \circ \pi^{(a\times b) \times c}_{a\times
+b}, \ang{\pi^{a\times b}_b \circ \pi^{(a\times b)\times c}_{a\times b},
+\pi^{(a\times b)\times c}_c}}$ has 
+$\ang{\ang{\pi^{a\times(b\times c)}_a, \pi^{b\times c}_b \circ
+\pi^{a\times(b\times c)}_{b\times c}}, \pi^{b\times c}_c \circ \pi^{a\times
+(b\times c)}_{b\times c}}$ as its inverse.
+To see this first note that, by exercise 3.8.3, $\ang{x,y} \circ h =
+\ang{x \circ h, y \circ h}$. Then, for the first component we have: 
+  \begin{align*}
+    & \pi^{a\times b}_a \circ \pi^{(a\times b) \times c}_{a\times
+b} \circ \ang{\ang{\pi^{a\times(b\times c)}_a, \pi^{b\times c}_b \circ
+\pi^{a\times(b\times c)}_{b\times c}}, \pi^{b\times c}_c \circ \pi^{a\times
+(b\times c)}_{b\times c}} \\
+    =~& \pi^{a\times b}_a \circ \ang{\pi^{a\times(b\times c)}_a, \pi^{b\times c}_b \circ
+\pi^{a\times(b\times c)}_{b\times c}} \\
+    =~& \pi^{a\times(b\times c)}_a
+  \end{align*}
+  For the second component, we have:
+  \[ \ang{\pi^{a\times b}_b \circ \pi^{(a\times b)\times c}_{a\times b},
+  \pi^{(a\times b)\times c}_c} \circ \ang{\ang{\pi^{a\times(b\times c)}_a, \pi^{b\times c}_b \circ
+\pi^{a\times(b\times c)}_{b\times c}}, \pi^{b\times c}_c \circ \pi^{a\times
+(b\times c)}_{b\times c}} \]
+Again, we split the analysis for each component. For the first one:
+  \begin{align*}
+    & \pi^{a\times b}_b \circ \pi^{(a\times b)\times c}_{a\times b} \circ \ang{\ang{\pi^{a\times(b\times c)}_a, \pi^{b\times c}_b \circ
+\pi^{a\times(b\times c)}_{b\times c}}, \pi^{b\times c}_c \circ \pi^{a\times
+(b\times c)}_{b\times c}} \\
+    =~& \pi^{a\times b}_b \circ \ang{\pi^{a\times(b\times c)}_a, \pi^{b\times
+    c}_b \circ \pi^{a\times(b\times c)}_{b\times c}} \\
+    =~& \pi^{b\times c}_b \circ \pi^{a\times(b\times c)}_{b\times c}
+  \end{align*}
+  and for the second:
+  \begin{align*}
+    & \pi^{(a\times b)\times c}_c \circ \ang{\ang{\pi^{a\times(b\times c)}_a, \pi^{b\times c}_b \circ
+\pi^{a\times(b\times c)}_{b\times c}}, \pi^{b\times c}_c \circ \pi^{a\times
+(b\times c)}_{b\times c}} \\
+  =~& \pi^{b\times c}_c \circ \pi^{a\times (b\times c)}_{b\times c}
+  \end{align*}
+
+Hence, the composition of both arrows is:
+\[ \ang{\pi^{a\times(b\times c)}_a, \ang{\pi^{b\times c}_b \circ
+\pi^{a\times(b\times c)}_{b\times c},\pi^{b\times c}_c \circ \pi^{a\times
+(b\times c)}_{b\times c}}} \colon a \times (b \times c) \to a \times (b \times c) \]
+which is (by exercises 3.8.1 and 3.8.5) precisely $1_{a\times (b\times c)}$.
+An analogous reasoning shows that swapping the composition order leads to
+$1_{(a\times b) \times c}$. Thus $(a \times b) \times c \cong a \times (b \times c)$.
+\end{solution}
+
 \end{document}
